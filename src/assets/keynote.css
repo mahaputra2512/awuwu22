@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('../assets/Akira.otf') format('truetype');
+}
+
+.f {
+  font-family: 'MyCustomFont', sans-serif;
+}
+
+.item1 {
+  grid-row: 1 / span 2;
+}
+
+.containersx {
+  position: relative;
+  height: 500px;
+  margin: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px; /* Add gap between the cardx elements */
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --cardx-height: 55vh;
+  --cardx-width: calc(var(--cardx-height) / 1.6);
+}
+
+.cardx {
+  background: #191c29;
+  width: 275px;
+  height: 325px;
+  padding: 3%;
+  position: relative;
+  border-radius: 6px;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+  font-family: cursive;
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardx h3 {
+  text-align: center;
+  margin: 0; /* Remove default margin */
+  position: absolute; /* Position the title inside the cardx element */
+  top: 50%; /* Move the top edge of the title to the vertical center */
+  left: 0; /* Align the title to the left edge of the cardx element */
+  right: 0; /* Align the title to the right edge of the cardx element */
+  transform: translateY(-50%); /* Move the title up by half of its height */
+}
+
+.cardx .circlex {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.cardx img {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  height: auto;
+}
+
+.cardx:hover {
+  color: rgb(255, 255, 255);
+  transition: color 1s;
+}
+
+.cardx:hover:before, .cardx:hover:after {
+  animation: none;
+}
+
+.cardx::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #d83ce3 43%, #16aedc);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+.cardx h3 {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.cardx::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--cardx-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--cardx-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+.cardx {
+  /* other properties */
+  display: flex;
+  padding-top: 40px;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.title {
+  color: white;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  left: 10px;
+  top: 25px;
+}
+
+.my-paragraph {
+  
+  font-size: 10pt;
+}
+
+.title2 {
+  margin: -15px 0;
+  font-size: 12px;
+}

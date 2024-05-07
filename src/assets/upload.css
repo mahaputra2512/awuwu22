@@ -1,0 +1,86 @@
+input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  
+  input[type="file"] {
+    display: block;
+    margin: auto;
+    align-items: center;
+    padding: 10px 35px 10px 0px;
+    width: fit-content;
+    border: 2px solid #00b3b3;
+    border-radius: 5px;
+    background: linear-gradient(to right, #ffff66, #ff6699);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    -webkit-animation: AnimationName 15s ease infinite;
+    animation: AnimationName 15s ease infinite;
+    -webkit-animation: BorderAnimation 15s ease infinite;
+    animation: BorderAnimation 15s ease infinite;
+  }
+  
+  @-webkit-keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  @keyframes AnimationName {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  @-webkit-keyframes BorderAnimation {
+    0% {
+      border-color: #00b3b3;
+    }
+    25% {
+      border-color: #ffff66;
+    }
+    50% {
+      border-color: #ff6699;
+    }
+    75% {
+      border-color: #ffff66;
+    }
+    100% {
+      border-color: #00b3b3;
+    }
+  }
+  @keyframes BorderAnimation {
+    0% {
+      border-color: #00b3b3;
+    }
+    25% {
+      border-color: #ffff66;
+    }
+    50% {
+      border-color: #ff6699;
+    }
+    75% {
+      border-color: #ffff66;
+    }
+    100% {
+      border-color: #00b3b3;
+    }
+  }
+  input[type="file"]::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  

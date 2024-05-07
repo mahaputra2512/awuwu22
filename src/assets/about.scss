@@ -1,0 +1,457 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../assets/Akira.otf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'MyCustomFont2';
+    src: url('../assets/OCR.ttf') format('truetype');
+  }
+  
+  $notchSize: 60px;
+  $color-highlight-fire: rgba(255, 236, 168, 1);
+  $color-primary-fire: rgba(255, 138, 48, 1);
+  $color-secondary-fire: rgba(240, 96, 29, 1);
+  
+  $color-highlight-ice: rgba(168, 236, 255, 1);
+  $color-primary-ice: rgba(48, 138, 255, 1);
+  $color-secondary-ice: rgba(29, 96, 240, 1);
+  @keyframes glowing {
+    0% {
+      box-shadow: 0 0 2px 1px rgb(141, 87, 163);
+      opacity: 1;
+    }
+    13% {
+      box-shadow: 0 0 8px 1px rgb(141, 87, 163);
+      opacity: 0.9;
+    }
+    20% {
+      box-shadow: 0 0 2px 1px rgb(141, 87, 163);
+      opacity: 1;
+    }
+    27% {
+      box-shadow: 0 0 8px 1px rgb(141, 87, 163);
+      opacity: 0.9;
+    }
+    34% {
+      box-shadow: 0 0 5px 1px rgb(141, 87, 163);
+      opacity: 1;
+    }
+    40% {
+      box-shadow: 0 0 8px 1px rgb(141, 87, 163);
+      opacity: 0.9;
+    }
+    48% {
+      box-shadow: 0 0 3px 1px rgb(141, 87, 163);
+      opacity: 1;
+    }
+    55% {
+      box-shadow: 0 0 9px 1px rgb(141, 87, 163);
+      opacity: 0.9;
+    }
+    62% {
+      box-shadow: 0 0 5px 0 rgb(141, 87, 163);
+      opacity: 1;
+    }
+    100% {
+      box-shadow: 0 0 8px 0 rgb(141, 87, 163);
+    }
+  }
+  @keyframes flicker {
+    0% {
+      opacity: 1;
+    }
+  
+    13% {
+      opacity: 0.3;
+    }
+  
+    23% {
+      opacity: 0.8;
+    }
+  
+    30% {
+      opacity: 0.3;
+    }
+  
+    38% {
+      opacity: 0.9;
+    }
+  
+    45% {
+      opacity: 0.7;
+    }
+  
+    53% {
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: medium;
+    color: #fff;
+  }
+  
+  // html {
+  //   font-size: 1.1em;
+  // }
+  
+  // body {
+  //   font-size: 1rem;
+  //   /* color: white; */
+  //   /* background-color: #f8f8f8; */
+  // }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .tex{
+    text-shadow: 0px 0px 30px rgb(255, 4, 121);
+  }
+  
+  .b1 {
+    /* border-radius: 30px; */
+    background: linear-gradient(rgb(0, 0, 0), rgb(1, 200, 239));
+    color: white;
+    position: relative;
+    display: inline-block;
+    outline: 200px solid white;
+    transition: color 1s;
+    overflow: hidden;
+    border-width: 3px;
+    clip-path: polygon(
+      0% $notchSize,
+      $notchSize 0%,
+      100% 0%,
+      100% calc(100% - #{$notchSize}),
+      calc(100% - #{$notchSize}) 100%,
+      0px 100%
+    );
+  }
+  
+  .flicker {
+    animation: flicker 1s 0s infinite;
+  }
+  
+  .b1:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 10px rgb(1, 200, 239);
+  }
+  
+  .b1::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    z-index: -1;
+    width: 250%;
+    height: 150%;
+    background: linear-gradient(45deg, rgb(141, 87, 163), rgb(229, 19, 118));
+    transform: scaleX(0) skewX(35deg);
+    transform-origin: left;
+    transition: transform 1s;
+  }
+  
+  .b1:hover::before {
+    transform: scaleX(1) skewX(35deg);
+  }
+  
+  .b2 {
+    /* border-radius: 30px; */
+    background: linear-gradient(rgb(0, 0, 0), rgb(229, 19, 118));
+    color: white;
+    position: relative;
+    display: inline-block;
+    outline: 2px solid white;
+    transition: color 1s;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px 5px rgb(229, 19, 118);
+    border-width: 3px;
+    clip-path: polygon(
+      0% $notchSize,
+      $notchSize 0%,
+      100% 0%,
+      100% calc(100% - #{$notchSize}),
+      calc(100% - #{$notchSize}) 100%,
+      0px 100%
+    );
+  }
+  
+  .content {
+    transform: skewY(10deg);
+    margin-bottom: 20px;
+  }
+  
+  .b2:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 10px rgb(229, 19, 118);
+  }
+  
+  .b2::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: -100px;
+    z-index: -1;
+    width: 250%;
+    height: 150%;
+    background: linear-gradient(45deg, rgb(141, 87, 163), rgb(1, 200, 239));
+    transform: scaleX(0) skewX(35deg);
+    transform-origin: left;
+    transition: transform 1s;
+  }
+  
+  .b2:hover::before {
+    transform: scaleX(1) skewX(35deg);
+  }
+  
+  .navbar {
+    position: absolute;
+    width: 100%;
+    padding: 40px;
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .logo {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  
+  .navbar .nav-links ul {
+    display: flex;
+    border-radius: 25px;
+  }
+  
+  .navbar .nav-links ul li {
+    margin: 0 2px;
+    list-style: none;
+    display: inline-block;
+  }
+  
+  .navbar a {
+    /* color: white; */
+    text-decoration: none;
+    color: #fff;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .navbar .menu-hamburger {
+    display: none;
+    color: white;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  
+  // .navbar a::before {
+  //   background: #fff none repeat scroll 0 0;
+  //   bottom: -2px;
+  //   content: "";
+  //   height: 3px;
+  //   left: 0;
+  //   position: absolute;
+  //   width: 0%;
+  //   transition: 0.5s;
+  // }
+  
+  .navbar a:hover::before {
+    width: 100%;
+  }
+  
+  .boxx {
+    background: transparent;
+    cursor: pointer;
+    padding: 0.2em 0.5em;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    opacity: 0.7;
+    transform: scale(0.9);
+    text-transform: uppercase;
+    font-weight: bold;
+    border-left: 2px solid rgb(149, 235, 29);
+  
+    &.fill {
+      border-left: none;
+      background-color: rgb(141, 87, 163);
+    }
+  
+    &:hover {
+      animation: 0.8s ease-out infinite alternate glowing;
+      background: rgb(65, 38, 76);
+      transform: scale(1) rotateZ(-10deg);
+      transition: transform 0.05s ease, opacity 0.15s ease;
+      opacity: 1;
+    }
+  
+    &:active {
+      background-color: rgb(50, 21, 61);
+      transition-duration: 0.1s;
+      color: #ddd;
+      transform: scale(0.95);
+    }
+  }
+  
+  .boxes {
+      border: 1px solid green;
+      backdrop-filter: blur(10px);
+      transform: skewX(-10deg);
+      height: 50px;
+      width: 150px;
+      border-radius: 20px 5px 20px 0px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .3s ease;
+      font-weight: 300;
+      text-shadow: 0 0 20px #fff;
+      text-transform: uppercase;
+      animation: breath2 2s .5s infinite alternate;
+      transition: all .2s ease;
+      cursor: pointer;
+          
+      &:before{
+          content: "";
+          display: block;
+          width: calc(100% - 22px);
+          height: calc(50px - 8px);
+          animation: breath 2s infinite alternate;
+          left: 10px;
+          top: 3px;
+          position: absolute;
+          background-color: transparent;
+          border: 1px solid #fff;
+          border-radius: 15px 3px 15px 3px;
+    }
+      &.fire{
+          border-color: $color-highlight-fire;
+          background-image: linear-gradient(to bottom, transparentize($color-primary-fire, .4), transparentize($color-secondary-fire, .4));
+          box-shadow: 0 0 70px transparentize($color-primary-fire, .4), 0 5px 20px transparentize($color-primary-fire, .4), inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
+          color: $color-highlight-fire;
+          &:before{
+              box-shadow: inset 0 0 30px 0 $color-highlight-fire;
+      }
+    }
+      &.ice{
+          border-color: $color-highlight-ice;
+          background-image: linear-gradient(to bottom, transparentize($color-primary-ice, .5), transparentize($color-secondary-ice, .5));
+          box-shadow: 0 0 70px transparentize($color-primary-ice, .5), 0 5px 20px transparentize($color-primary-ice, .5), inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
+          color: $color-highlight-ice;
+          &:before{
+              box-shadow: inset 0 0 30px 0 $color-highlight-ice;
+      }
+    }
+      &:hover{
+          &.fire{
+              box-shadow: 0 0 70px transparentize($color-primary-fire, .2), 0 5px 20px transparentize($color-primary-fire, .2), inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
+              animation: 0.8s ease-out infinite alternate glowing;
+        &:before{
+                  box-shadow: inset 0 0 50px 0 $color-highlight-fire;
+    }
+    }
+          &.ice{
+              box-shadow: 0 0 70px transparentize($color-primary-ice, .2), 0 5px 20px transparentize($color-primary-ice, .2), inset 0 1px $color-highlight-ice, inset 0 -1px $color-highlight-ice;
+              animation: 0.8s ease-out infinite alternate glowing;
+        &:before{
+                  box-shadow: inset 0 0 50px 0 $color-highlight-ice;
+        }
+      }
+    }
+  }
+  
+  @keyframes breath{
+      0%{
+          transform: scaleX(1)
+    }
+      100%{
+          transform: scaleX(0.95)
+    }
+  }
+  
+  @keyframes breath2 {
+      0%{
+          transform: skewX(-10deg) scaleX(1)
+    }
+      100%{
+          transform: skewX(-10deg) scaleX(0.95)
+    }
+  }
+  
+  @media screen and (max-width: 900px) {
+    .navbar {
+      padding: 0;
+    }
+  
+    .navbar .logo {
+      display: none;
+    }
+  
+    .navbar .menu-hamburger {
+      display: block;
+    }
+  
+    .nav-links {
+      top: 0;
+      left: -100%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      width: 100%;
+      height: 100vh;
+      transition: left 0.5s ease;
+    }
+  
+    .nav-links.mobile-menu {
+      left: 0;
+    }
+  
+    .nav-links ul {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar .nav-links ul li {
+      margin: 25px 0;
+      font-size: 1.2em;
+    }
+  
+    .menu-hamburger {
+      display: block;
+    }
+
+    .my-div {
+        font-family: 'MyCustomFont2', sans-serif;
+        font-size: medium;
+        color: #fff;
+    }
+  }
+  
